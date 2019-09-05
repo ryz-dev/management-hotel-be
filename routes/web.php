@@ -14,3 +14,11 @@
 Route::get('/', function () {
     return view('index');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'room-type'], function () {
+        Route::get('/', 'RoomTypeController@index')->name('room-type-index');
+        Route::get('/create', 'RoomTypeController@create')->name('room-type-create');
+        Route::post('/store', 'RoomTypeController@store')->name('room-type-store');
+    });
+});
